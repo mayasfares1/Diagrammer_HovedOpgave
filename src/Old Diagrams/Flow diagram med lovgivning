@@ -1,0 +1,86 @@
+@startuml
+skinparam handwritten true
+skinparam defaultFontSize 14
+
+title Oversigt over regler fra §1 og §2
+
+start
+
+:Ansættelsestype?;
+' Brug en beslutning i stedet for switch
+if (Ansættelsestype = "Fuldtid"?) then (Ja)
+    :Fuldtid;
+    note left
+        §1, stk. 1.1
+        - Normalt 37 timer pr. uge
+    end note
+else
+    if (Ansættelsestype = "Deltid"?) then (Ja)
+        :Deltid;
+        note left
+            §1, stk. 1.2
+            - Aftalt arbejdstid individuelt
+        end note
+    else
+        if (Ansættelsestype = "Fleksibel Deltid"?) then (Ja)
+            :Fleksibel Deltid;
+            note left
+                §1, stk. 1.3
+                - Aftalt arbejdstidsinterval
+            end note
+        endif
+    endif
+endif
+
+:Arbejdstidsplan?;
+note right
+    §1, stk. 1.B
+    - Skal være skriftlig
+    - Angive længde og placering
+end note
+
+if (Arbejdstid > 45 timer/uge?) then (Ja)
+    :Overarbejde;
+    note right
+        §1, stk. 6.A
+        - Overarbejde betales med tillæg
+    end note
+endif
+
+if (Arbejder efter kl. 17.45 mere end 2 dage/uge?) then (Ja)
+    :Begrænsning i aftenarbejde;
+    note right
+        §1, stk. 1.C
+    end note
+endif
+
+if (Arbejder mere end hver 2. lørdag efter kl. 14.15?) then (Ja)
+    :Begrænsning i lørdagsarbejde;
+    note right
+        §1, stk. 1.C
+    end note
+endif
+
+if (Arbejdstid > 5 timer/dag?) then (Ja)
+    :Pause på mindst ½ time;
+    note right
+        §1, stk. 1.E
+    end note
+endif
+
+:Overenskomstmæssig løn?;
+note right
+    §2, stk. 2 og 4
+    - Faglært og ufaglært minimalløn
+end note
+
+if (Anciennitet >= 1 år?) then (Ja)
+    :Anciennitetstillæg;
+    note right
+        §2, stk. 5
+        - Tillæg på 2,90 kr./time
+    end note
+endif
+
+stop
+@enduml

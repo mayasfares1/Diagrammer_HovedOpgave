@@ -1,0 +1,17 @@
+@startuml
+package "Frontend" {
+  [React UI]
+}
+
+package "Backend" {
+  [Controller (C#)]
+  [Service Layer]
+  [Database]
+}
+
+[User] --> [React UI]
+[React UI] --> [Controller (C#)]
+[Controller (C#)] --> [Service Layer]
+[Service Layer] --> [Database]
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+start
+:Skriv dit rolle (elev, medarbejder, leder);
+:Skriv dit periode (Start og Slut Dato);
+:Udregn månedsløn;
+:Indtast din Vagtplan;
+:Udregn forskudt tid;
+    note left
+        Timer som ligger udenfor et normal
+       arbejdstid som f.eks Fredag kl18-23
+    end note
+:Output;
+end
+@enduml
+

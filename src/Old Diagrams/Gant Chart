@@ -1,0 +1,21 @@
+@startgantt
+Project starts 2024-11-01
+[Project Planning] starts 2024-11-01 and lasts 10 days
+[Research & Development] starts 2024-11-12 and lasts 15 days
+[Design] starts 2024-11-15 and lasts 7 days
+[Implementation] starts 2024-11-30 and lasts 20 days
+[Testing] starts 2024-12-20 and lasts 10 days
+[Deployment] starts 2025-01-05 and lasts 5 days
+
+[Research & Development] is colored in yellow
+[Design] is colored in lightblue
+[Implementation] is colored in green
+[Testing] is colored in orange
+[Deployment] is colored in lightgrey
+
+[Design] starts at [Research & Development]'s end
+[Implementation] starts at [Design]'s end
+[Testing] starts at [Implementation]'s end
+[Deployment] starts at [Testing]'s end
+
+@endgantt

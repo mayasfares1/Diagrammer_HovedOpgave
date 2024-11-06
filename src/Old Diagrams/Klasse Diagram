@@ -1,0 +1,47 @@
+@startuml
+class Bruger {
+  - BrugerID : int
+  - Navn : string
+  - Email : string
+  + IndtastTimer()
+  + IndtastPause()
+  + TilføjAfvigelser()
+  + SeLøn()
+  + TjekOverholdelse()
+}
+
+class Superbruger {
+  - SuperbrugerID : int
+  - Navn : string
+  - Email : string
+  + ÆndrRegler()
+  + TilføjRegel()
+  + SletRegel()
+  + SætPrioritet()
+}
+
+class SystemKontroller {
+  + BehandlBrugerInput()
+  + BeregnLøn()
+  + TjekOverholdelseAfRegler()
+  + ÆndrRegler()
+}
+
+class Database {
+  + GemBrugerData()
+  + HentRegler()
+  + OpdaterRegler()
+  + GemBeregnedeData()
+}
+
+class API {
+  + HentRegler()
+  + OpdaterRegler()
+}
+
+Bruger --> SystemKontroller
+Superbruger --> SystemKontroller
+SystemKontroller --> Database
+SystemKontroller --> API
+
+@enduml

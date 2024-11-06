@@ -1,0 +1,31 @@
+@startuml
+actor "Bruger" as User
+actor "Superbruger" as Superuser
+
+usecase "Indtast Timer" as UC1
+usecase "Tilføj Afvigelser" as UC2
+usecase "Se Løn" as UC3
+usecase "Tjek Overenskomst" as UC4
+usecase "Ændre Regler" as UC5
+usecase "Tilføj Regel" as UC6
+usecase "Slet Regel" as UC7
+usecase "Sæt Præcedens" as UC8
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+
+Superuser --> UC5
+Superuser --> UC6
+Superuser --> UC7
+Superuser --> UC8
+
+package "System" {
+  UC1 -down-> UC2
+  UC3 -down-> UC4
+  UC5 -down-> UC6
+  UC7 -down-> UC8
+}
+
+@enduml

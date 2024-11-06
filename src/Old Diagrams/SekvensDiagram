@@ -1,0 +1,14 @@
+@startuml
+actor User
+participant "Frontend (React)" as Frontend
+participant "Controller (C#)" as Controller
+participant "Database" as DB
+
+User -> Frontend: Indtast Timer
+Frontend -> Controller: Send Timer Data
+Controller -> DB: Gem Timer Data
+DB --> Controller: Bekræftelse
+Controller --> Frontend: Vis Timer er gemt
+Frontend --> User: Vis succesmeddelelse
+
+@enduml

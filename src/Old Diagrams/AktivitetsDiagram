@@ -1,0 +1,12 @@
+@startuml
+start
+:Bruger indtaster timer;
+:Send data til Controller;
+if (Er data valide?) then (ja)
+    :Gem timer i databasen;
+    :Vis succesmeddelelse;
+else (nej)
+    :Vis fejlmeddelelse;
+endif
+stop
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+entity "Bruger" as Bruger {
+  * BrugerID : int
+  --
+  Navn : string
+  Email : string
+}
+
+entity "Regel" as Regel {
+  * RegelID : int
+  --
+  Navn : string
+  Beskrivelse : string
+}
+
+entity "Løn" as Løn {
+  * LønID : int
+  --
+  Timer : float
+  Afvigelser : string
+  BruttoLøn : float
+}
+
+entity "Overenskomst" as Overenskomst {
+  * OverenskomstID : int
+  --
+  Titel : string
+  Detaljer : string
+}
+
+entity "Superbruger" as Superbruger {
+  * SuperbrugerID : int
+  --
+  Navn : string
+  Email : string
+}
+
+Bruger <---* Løn : "1 til N"
+Bruger -- Regel : "Mange til N"
+Superbruger -- Regel : "Kan administrere"
+Regel -- Overenskomst : "Tilknyttet"
+Løn -- Overenskomst : "Tilknyttet"
+
+@enduml

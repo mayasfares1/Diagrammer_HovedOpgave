@@ -1,7 +1,7 @@
 @startuml
 actor User
 participant "Frontend (React)" as Frontend
-participant "Controller (C#)" as Controller
+participant "Controller (JAVA)" as Controller
 participant "Database" as DB
 
 User -> Frontend: Indtast Timer

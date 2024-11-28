@@ -1,44 +1,60 @@
 @startuml
-entity "Bruger" as Bruger {
+entity Bruger {
   * BrugerID : int
+  * Navn : string
+  * Email : string
   --
-  Navn : string
-  Email : string
+  IndtastTimer()
+  IndtastPause()
+  TilføjAfvigelser()
+  SeLøn()
+  TjekOverholdelse()
 }
 
-entity "Regel" as Regel {
-  * RegelID : int
-  --
-  Navn : string
-  Beskrivelse : string
-}
-
-entity "Løn" as Løn {
-  * LønID : int
-  --
-  Timer : float
-  Afvigelser : string
-  BruttoLøn : float
-}
-
-entity "Overenskomst" as Overenskomst {
-  * OverenskomstID : int
-  --
-  Titel : string
-  Detaljer : string
-}
-
-entity "Superbruger" as Superbruger {
+entity Superbruger {
   * SuperbrugerID : int
+  * Navn : string
+  * Email : string
   --
-  Navn : string
-  Email : string
+  ÆndrRegler()
+  TilføjRegel()
+  SletRegel()
+  SætPrioritet()
 }
 
-Bruger <---* Løn : "1 til N"
-Bruger -- Regel : "Mange til N"
-Superbruger -- Regel : "Kan administrere"
-Regel -- Overenskomst : "Tilknyttet"
-Løn -- Overenskomst : "Tilknyttet"
+entity SystemKontroller {
+  --
+  BehandlBrugerInput()
+  BeregnLøn()
+  TjekOverholdelseAfRegler()
+  ÆndrRegler()
+}
 
+entity Database {
+  --
+  GemBrugerData()
+  HentRegler()
+  OpdaterRegler()
+  GemBeregnedeData()
+}
+
+entity API {
+  --
+  HentRegler()
+  OpdaterRegler()
+}
+
+entity Admin {
+  * id : int
+  * user_id : int
+  * ActionType : string
+  * Timestamp : datetime
+  * Status : string
+}
+
+Bruger --> SystemKontroller
+Superbruger --> SystemKontroller
+SystemKontroller --> Database
+SystemKontroller --> API
+Admin --> Database
 @enduml

@@ -1,0 +1,46 @@
+@startuml
+actor User
+actor SuperUser
+actor Admin
+
+rectangle System {
+    entity "TimerInputForm" as TimerInput
+    entity "SalaryDisplay" as SalaryDisplay
+    entity "ComplianceChecker" as ComplianceChecker
+    entity "RuleManager" as RuleManager
+    entity "LogViewer" as LogViewer
+
+    boundary "LoginController" as LoginController
+    boundary "UserController" as UserController
+    boundary "AdminController" as AdminController
+    boundary "RuleController" as RuleController
+
+    control "RuleValidation" as RuleValidation
+    control "SalaryCalculator" as SalaryCalculator
+    control "LogHandler" as LogHandler
+
+    database "RuleDatabase" as RuleDB
+    database "LogDatabase" as LogDB
+}
+
+User --> LoginController : "Log in"
+User --> UserController : "Submit hours"
+UserController --> TimerInput : "Receive hours"
+UserController --> ComplianceChecker : "Check rules"
+ComplianceChecker --> RuleValidation : "Validate rules"
+RuleValidation --> RuleDB : "Fetch rules"
+UserController --> SalaryCalculator : "Calculate salary"
+SalaryCalculator --> SalaryDisplay : "Show salary"
+
+SuperUser --> LoginController : "Log in"
+SuperUser --> RuleController : "Modify rules"
+RuleController --> RuleManager : "Manage rules"
+RuleManager --> RuleValidation : "Validate new rule"
+RuleManager --> RuleDB : "Update rule database"
+
+Admin --> LoginController : "Log in"
+Admin --> AdminController : "View log"
+AdminController --> LogViewer : "Display logs"
+LogViewer --> LogHandler : "Retrieve logs"
+LogHandler --> LogDB : "Fetch log entries"
+@enduml

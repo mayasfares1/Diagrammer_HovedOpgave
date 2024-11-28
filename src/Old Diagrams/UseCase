@@ -1,6 +1,7 @@
 @startuml
 actor "Bruger" as User
 actor "Superbruger" as Superuser
+actor "Administrator" as Admin
 
 usecase "Indtast Timer" as UC1
 usecase "Tilføj Afvigelser" as UC2
@@ -10,6 +11,7 @@ usecase "Ændre Regler" as UC5
 usecase "Tilføj Regel" as UC6
 usecase "Slet Regel" as UC7
 usecase "Sæt Præcedens" as UC8
+usecase "Se Logbog" as UC9
 
 User --> UC1
 User --> UC2

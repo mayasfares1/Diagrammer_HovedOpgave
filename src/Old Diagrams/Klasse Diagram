@@ -39,9 +39,24 @@ class API {
   + OpdaterRegler()
 }
 
+class Admin {
+    - Admin_id : int
+    - User_id : string
+    - Password : string
+    - ActionType : string
+    - Timestamp : datetime
+    - Status : string
+    + LæsLog()
+    + SkrivRapport()
+
+
+
+
+}
+
 Bruger --> SystemKontroller
 Superbruger --> SystemKontroller
 SystemKontroller --> Database
 SystemKontroller --> API
-
+Admin--> Superbruger
 @enduml

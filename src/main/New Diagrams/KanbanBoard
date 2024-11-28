@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #EEEBDC
+skinparam handwritten false
+skinparam defaultFontName Monospace
+
+title Kanban Board
+
+|To Do|
+
+
+:Task 4 - Koding af Backend;
+:Task 5 - Test af Backend;
+:Task 6 - Test af Frontend;
+
+|In Progress|
+:Task 7 - Udarbejdelse af rapport;
+:Task 8 - Koding af Frontend;
+:Task 9 - Kodning af Backend;
+:Task 3 - Genoprettelse af diagrammer;
+
+|Done|
+
+:Task 1 - Teknologi Valg;
+:Task 2 - Definere krav;
+
+@enduml

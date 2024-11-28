@@ -1,0 +1,60 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Arial
+
+title Rule Management System with React, Java Spring, and Drools
+
+actor User as U
+
+package "React Frontend" {
+    component "Rule List" as RL
+    component "Rule Editor" as RE
+    component "Rule Manager" as RM
+}
+
+package "REST API Layer" {
+    component "GET /api/rules" as GET_RULES
+    component "POST /api/rules" as POST_RULE
+    component "PUT /api/rules/{id}" as PUT_RULE
+    component "DELETE /api/rules/{id}" as DELETE_RULE
+}
+
+package "Java Spring Backend" {
+    component "RuleService" as RS
+    component "RuleRepository" as RR
+    component "Validation Layer" as VL
+}
+
+package "Drools Integration" {
+    component "KieContainer" as KC
+    component "KieSession" as KS
+}
+
+database "Database" as DB
+
+' User interactions
+U --> RL : View Rules
+U --> RE : Create/Edit Rules
+U --> RM : Manage Rules
+
+' React Frontend to REST API
+RL --> GET_RULES : Fetch Rules
+RE --> POST_RULE : Create Rule
+RE --> PUT_RULE : Update Rule
+RM --> DELETE_RULE : Delete Rule
+
+' REST API to Backend
+GET_RULES --> RS : Retrieve Rules
+POST_RULE --> RS : Create Rule
+PUT_RULE --> RS : Update Rule
+DELETE_RULE --> RS : Delete Rule
+
+' Backend to Database
+RS --> RR : Query/Store Rules
+
+' Backend to Drools
+RS --> VL : Validate Rules
+VL --> KC : Reload Rules
+KC --> KS : Apply Rules
+
+@enduml

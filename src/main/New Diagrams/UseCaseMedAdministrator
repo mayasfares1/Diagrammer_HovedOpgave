@@ -1,0 +1,23 @@
+@startuml
+actor User
+actor SuperUser
+actor Admin
+
+usecase "Indtaste arbejdstimer\nmed afvigelser" as UC1
+usecase "Se løn på skærmen" as UC2
+usecase "Kontrollere overenskomstregler" as UC3
+usecase "Ændre regelsæt" as UC4
+usecase "Tilføje nye regler" as UC5
+usecase "Slette ugyldige regler" as UC6
+usecase "Se log over oprettede sager" as UC7
+
+User --> UC1
+User --> UC2
+User --> UC3
+
+SuperUser --> UC4
+SuperUser --> UC5
+SuperUser --> UC6
+
+Admin --> UC7
+@enduml

@@ -4,14 +4,14 @@ package "Frontend" {
 }
 
 package "Backend" {
-  [Controller (C#)]
+  [Controller (Java)]
   [Service Layer]
   [Database]
 }
 
 [User] --> [React UI]
-[React UI] --> [Controller (C#)]
-[Controller (C#)] --> [Service Layer]
+[React UI] --> [Controller (Java)]
+[Controller (Java)] --> [Service Layer]
 [Service Layer] --> [Database]
 
 @enduml

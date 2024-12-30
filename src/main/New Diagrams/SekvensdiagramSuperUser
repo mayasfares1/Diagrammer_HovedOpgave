@@ -1,0 +1,29 @@
+@startuml
+
+' **Sequence Diagram for Superuser Managing Rules**
+actor Superbruger
+participant Frontend
+participant Backend
+participant RuleController
+participant Database
+
+Superbruger -> Frontend: Vælg regel og udfør handling (slet, rediger, tilføj, prioriter)
+Frontend -> Backend: Send regelhandling
+Backend -> RuleController: Udfør handling
+alt Tilføj eller rediger regel
+    RuleController -> Database: Tilføj/rediger regel
+    Database --> RuleController: Regel opdateret
+end
+alt Slet regel
+    RuleController -> Database: Slet regel
+    Database --> RuleController: Regel slettet
+end
+alt Prioriter regel
+    RuleController -> Database: Opdater regelprioritet
+    Database --> RuleController: Prioritet opdateret
+end
+RuleController --> Backend: Bekræft handling
+Backend --> Frontend: Vis succesbesked
+Frontend --> Superbruger: Handling fuldført
+
+@enduml

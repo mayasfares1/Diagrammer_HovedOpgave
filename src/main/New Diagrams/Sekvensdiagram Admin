@@ -1,0 +1,28 @@
+@startuml
+
+' **Sequence Diagram for Admin Viewing Logs**
+actor Admin
+participant Frontend
+participant Backend
+participant LogController
+participant Database
+
+Admin -> Frontend: Anmod om logoversigt
+Frontend -> Backend: Send forespørgsel
+Backend -> LogController: Hent logdata
+LogController -> Database: Hent logs
+Database --> LogController: Returner logs
+LogController --> Backend: Returner logoversigt
+Backend --> Frontend: Send data
+Frontend --> Admin: Vis logoversigt
+
+Admin -> Frontend: Klik på specifik log
+Frontend -> Backend: Anmod om logdetaljer
+Backend -> LogController: Hent logdetaljer
+LogController -> Database: Hent detaljer
+Database --> LogController: Returner detaljer
+LogController --> Backend: Returner data
+Backend --> Frontend: Vis detaljer
+Frontend --> Admin: Vis logdetaljer
+
+@enduml

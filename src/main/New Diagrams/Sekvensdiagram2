@@ -1,0 +1,19 @@
+@startuml
+
+' **Sequence Diagram for "Calculate Wage and Compliance" Use Case**
+actor Bruger
+participant Frontend
+participant Backend
+participant RuleEngine
+participant Database
+
+Bruger -> Frontend: Indtast arbejdstimer og løn
+Frontend -> Backend: Send data
+Backend -> RuleEngine: Beregn overholdelse
+RuleEngine -> Database: Hent regler
+Database --> RuleEngine: Returner regler
+RuleEngine --> Backend: Resultat af beregning
+Backend --> Frontend: Send resultat
+Frontend --> Bruger: Vis resultat
+
+@enduml

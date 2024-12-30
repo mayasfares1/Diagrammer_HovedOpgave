@@ -1,0 +1,30 @@
+@startuml
+title Burndown Chart for Sprint 1 (Nov 11 - Nov 17)
+
+scale 2
+
+legend
+  |Color   |Line Type            |Description              |
+  |------- |---------------------|-------------------------|
+  |Blue    |Solid Line with Dots |Actual Remaining Work    |
+  |Orange  |Dashed Line          |Ideal Trendline          |
+  |Green   |Dotted Line          |Sprint Goal (Zero Points)|
+endlegend
+
+skinparam chartBackgroundColor White
+skinparam chartLegendBackgroundColor LightGray
+skinparam chartFontSize 14
+
+chart "Story Points Remaining" "Date" "Story Points" {
+  Nov 11: 21
+  Nov 12: 18
+  Nov 13: 15
+  Nov 14: 12
+  Nov 15: 8
+  Nov 16: 4
+  Nov 17: 0
+}
+
+line (Nov 11, 21) (Nov 17, 0) orange dashed "Ideal Trendline"
+line (Nov 17, 0) (Nov 17, 0) green dotted "Sprint Goal"
+@enduml
